@@ -1,0 +1,51 @@
+[gd_scene load_steps=7 format=3 uid="uid://c220uq58oj5wj"]
+
+[ext_resource type="Script" path="res://Scenes/Enemy/Enemy.gd" id="1_56hr5"]
+[ext_resource type="Texture2D" uid="uid://b8wixmjvvot8s" path="res://Scenes/Enemy/Jingyi1.png" id="1_da6bs"]
+[ext_resource type="Texture2D" uid="uid://0tsyotf886fb" path="res://Scenes/Enemy/Jingyi2.png" id="2_ddfqw"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_t5x3s"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("1_da6bs")
+}, {
+"duration": 1.0,
+"texture": ExtResource("2_ddfqw")
+}],
+"loop": true,
+"name": &"Walk",
+"speed": 5.0
+}]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_3ofc3"]
+radius = 45.0
+height = 116.0
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_jjg0b"]
+radius = 47.0
+height = 124.0
+
+[node name="Enemy" type="RigidBody2D"]
+gravity_scale = 0.0
+script = ExtResource("1_56hr5")
+
+[node name="EnemySprite" type="AnimatedSprite2D" parent="."]
+texture_filter = 1
+scale = Vector2(5, 5)
+sprite_frames = SubResource("SpriteFrames_t5x3s")
+animation = &"Walk"
+frame = 1
+frame_progress = 0.426008
+
+[node name="EnemyCollision" type="CollisionShape2D" parent="."]
+position = Vector2(0, 14)
+shape = SubResource("CapsuleShape2D_3ofc3")
+
+[node name="EnemyArea" type="Area2D" parent="."]
+
+[node name="EnemyAreaCollision" type="CollisionShape2D" parent="EnemyArea"]
+position = Vector2(0, 14)
+shape = SubResource("CapsuleShape2D_jjg0b")
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]

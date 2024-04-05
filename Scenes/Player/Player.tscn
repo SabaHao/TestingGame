@@ -1,0 +1,51 @@
+[gd_scene load_steps=7 format=3 uid="uid://c4e7eqbo0aggr"]
+
+[ext_resource type="Texture2D" uid="uid://d2vu6e20ncdo1" path="res://Scenes/Player/Sprite-0001-Recovered1.png" id="1_bvufv"]
+[ext_resource type="Script" path="res://Scenes/Player/Player.gd" id="1_xvkqh"]
+[ext_resource type="Texture2D" uid="uid://twkrdfrard6y" path="res://Scenes/Player/Sprite-0001-Recovered2.png" id="2_c8faq"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_cgcnq"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("1_bvufv")
+}, {
+"duration": 1.0,
+"texture": ExtResource("2_c8faq")
+}],
+"loop": true,
+"name": &"Walk",
+"speed": 5.0
+}]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_ke51c"]
+radius = 38.0
+height = 122.0
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_4fren"]
+radius = 41.0
+height = 128.0
+
+[node name="Player" type="CharacterBody2D"]
+script = ExtResource("1_xvkqh")
+speed = 500
+metadata/_edit_group_ = true
+
+[node name="PlayerSprite" type="AnimatedSprite2D" parent="."]
+texture_filter = 1
+scale = Vector2(5, 5)
+sprite_frames = SubResource("SpriteFrames_cgcnq")
+animation = &"Walk"
+frame_progress = 0.457239
+
+[node name="PlayerCollision" type="CollisionShape2D" parent="."]
+position = Vector2(0, 15)
+shape = SubResource("CapsuleShape2D_ke51c")
+
+[node name="PlayerArea" type="Area2D" parent="."]
+
+[node name="PlayerAreaCollision" type="CollisionShape2D" parent="PlayerArea"]
+position = Vector2(0, 15)
+shape = SubResource("CapsuleShape2D_4fren")
+
+[connection signal="area_entered" from="PlayerArea" to="." method="_on_player_area_area_entered"]
