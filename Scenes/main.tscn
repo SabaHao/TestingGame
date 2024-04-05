@@ -4,7 +4,7 @@
 [ext_resource type="PackedScene" uid="uid://c220uq58oj5wj" path="res://Scenes/Enemy/Enemy.tscn" id="2_3klco"]
 [ext_resource type="PackedScene" uid="uid://c4e7eqbo0aggr" path="res://Scenes/Player/Player.tscn" id="3_7huas"]
 [ext_resource type="Script" path="res://Scenes/Sprite2D.gd" id="4_8fquk"]
-[ext_resource type="Texture2D" uid="uid://cy5ym84i4ym36" path="res://Flower.png" id="4_137ij"]
+[ext_resource type="Texture2D" uid="uid://bkcipjt6btkf6" path="res://Flower.png" id="4_137ij"]
 
 [node name="Main" type="Node"]
 script = ExtResource("1_tahtl")
@@ -18,6 +18,27 @@ position = Vector2(550, 300)
 [node name="Flower" type="Sprite2D" parent="."]
 texture_filter = 1
 position = Vector2(261, 206)
+scale = Vector2(5, 5)
+texture = ExtResource("4_137ij")
+script = ExtResource("4_8fquk")
+
+[node name="Flower2" type="Sprite2D" parent="."]
+texture_filter = 1
+position = Vector2(193, 568)
+scale = Vector2(5, 5)
+texture = ExtResource("4_137ij")
+script = ExtResource("4_8fquk")
+
+[node name="Flower3" type="Sprite2D" parent="."]
+texture_filter = 1
+position = Vector2(508, 622)
+scale = Vector2(5, 5)
+texture = ExtResource("4_137ij")
+script = ExtResource("4_8fquk")
+
+[node name="Flower4" type="Sprite2D" parent="."]
+texture_filter = 1
+position = Vector2(753, 176)
 scale = Vector2(5, 5)
 texture = ExtResource("4_137ij")
 script = ExtResource("4_8fquk")
